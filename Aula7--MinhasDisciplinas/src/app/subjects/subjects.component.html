@@ -1,0 +1,41 @@
+<section>
+  <h1>Disciplinas</h1>
+  <table>
+    <tr>
+      <th>Dia da semana</th>
+      <th>Horário</th>
+      <th>Nome da disciplina</th>
+    </tr>
+    <tr *ngFor="let item of schedulesService.getList()">
+      <td>{{item.weekDay}}</td>
+      <td>{{item.time}}</td>
+      <td>{{item.name}}</td>
+      <td><input type="submit" value="Remover" (click)="schedulesService.remove(item.id)"/></td>
+    </tr>
+  </table>
+  <div class="form">
+    <label>
+      Dia da semana:
+
+      <select [(ngModel)]="inputWeekDay" required>
+        <option value="Segunda-feira">Segunda-feira</option>
+        <option value="Terça-feira">Terça-feira</option>
+        <option value="Quarta-feira">Quarta-feira</option>
+        <option value="Quinta-feira">Quinta-feira</option>
+        <option value="Sexta-feira">Sexta-feira</option>
+        <option value="Sábado">Sábado</option>
+        <option value="Domingo">Domingo</option>
+      </select>
+
+    </label>
+    <label>
+      Horário:
+      <input type="time" [(ngModel)]="inputTime" required>
+    </label>
+    <label>
+      Nome:
+      <input type="text" [(ngModel)]="inputName" required>
+    </label>
+    <input type="submit" value="Adicionar" (click)="handleClick()">
+  </div>
+</section>

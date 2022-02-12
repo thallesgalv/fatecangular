@@ -1,0 +1,27 @@
+a {
+  border: 1px solid #e1e1e6;
+  padding: 0.5rem;
+  color: #e1e1e6;
+  text-decoration: none;
+  margin: 2rem auto;
+  transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+a:hover {
+  transform: scale(1.1);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+ul {
+  width: fit-content;
+  margin: 2rem auto;
+}
+
+hr {
+  width: 80%;
+}

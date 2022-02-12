@@ -1,0 +1,26 @@
+<section>
+  <h1>Carteira</h1>
+  <h3>Saldo</h3>
+  <p>{{ walletService.balance }} bitcoins</p>
+  <p>{{ walletService.getBalance()?.BRL }} reais</p>
+  <p>{{ walletService.getBalance()?.USD }} dólares</p>
+  <p>{{ walletService.getBalance()?.EUR }} euros</p>
+
+  <h3>Transação</h3>
+  <div class="form">
+    <label
+      >Valor em Reais:
+      <input type="number" [(ngModel)]="walletService.transationValue" />
+      <input
+        type="submit"
+        value="Adicionar à carteira"
+        (click)="walletService.addValue()"
+      />
+      <input
+        type="submit"
+        value="Remover da carteira"
+        (click)="walletService.removeValue()"
+      />
+    </label>
+  </div>
+</section>

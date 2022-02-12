@@ -1,0 +1,74 @@
+<div class="formRegistration">
+  <h2>Produtos</h2>
+  <div>
+    <div class="col">
+      <label> ID: <input type="number" [(ngModel)]="this.id" /> </label>
+      <label> Nome: <input type="text" [(ngModel)]="this.name" /> </label>
+      <label>
+        Ingredientes:
+        <input type="text" [(ngModel)]="this.ingredientes" />
+      </label>
+      <label>
+        Link da Imagem: <input type="text" [(ngModel)]="this.imagem" />
+      </label>
+      <label>
+        Restaurantes:
+
+        <select [(ngModel)]="this.selectedRestaurant">
+          <option value="">Selecione o(s) restaurante(s)</option>
+          <option
+            *ngFor="let restaurant of restaurantsService.restaurants"
+            value="{{ restaurant.id }}"
+          >
+            {{ restaurant.nome }}
+          </option>
+        </select>
+        <ul>
+          <li *ngFor="let selectRestaurant of this.restauranteDrop">
+            <p>
+              {{ selectRestaurant.nome }}
+              <small (click)="handleRemove(selectRestaurant.id)">X</small>
+            </p>
+          </li>
+        </ul>
+        <button (click)="handleAdd()">Adicionar Restaurante</button>
+      </label>
+    </div>
+    <div class="col">
+      <label>
+        Categoria:
+        <select [(ngModel)]="this.categoria">
+          <option value="">Selecione a categoria</option>
+          <option
+            *ngFor="let categories of productsService.categories"
+            value="{{ categories.id }}"
+          >
+            {{ categories.nome }}
+          </option>
+        </select>
+      </label>
+      <label>
+        Calorias:
+        <input type="number" [(ngModel)]="this.cals" />
+      </label>
+      <label>
+        Gorduras:
+        <input type="number" [(ngModel)]="this.gord" />
+      </label>
+      <label>
+        Carboidratos: <input type="number" [(ngModel)]="this.carbs" />
+      </label>
+      <label>
+        Proteínas: <input type="number" [(ngModel)]="this.prot" />
+      </label>
+    </div>
+  </div>
+</div>
+<div class="flex">
+  <button (click)="handleRegistration()">
+    Cadastrar Produto
+  </button>
+  <button (click)="handleUpdate()">
+    Atualizar Produto
+  </button>
+</div>

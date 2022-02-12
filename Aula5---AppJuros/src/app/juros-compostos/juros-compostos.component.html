@@ -1,0 +1,29 @@
+<section>
+  <h1>Juros Compostos</h1>
+
+  <div class="form">
+    <label> Valor:
+    <input type="number" step="100" [(ngModel)]="valor">
+  </label>
+    <label> Taxa de Juros (em %):
+   <input type="number" step="0.01" [(ngModel)]="taxa">
+   </label>
+    <label> Número de meses
+   <input type="number" [(ngModel)]="meses">
+  </label>
+  </div>
+
+  <table>
+    <tr>
+      <th>Mês</th>
+      <th>Juros Compostos Acumulados</th>
+    <tr>
+    <tr *ngFor="let item of getTable()">
+      <td>{{item.mes}}</td>
+      <td>{{item.juros}}</td>
+    </tr>
+  </table>
+
+
+
+</section>

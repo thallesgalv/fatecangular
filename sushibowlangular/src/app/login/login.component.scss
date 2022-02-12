@@ -1,0 +1,60 @@
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  div.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    box-shadow: 0px 5px 10px 0 rgb(44 44 44 / 15%);
+    background: #fff;
+    top: 100%;
+    right: 0;
+    position: absolute;
+    animation: fadeIn 0.5s forwards;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      height: 100vh;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate3d(0, -25px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    label {
+      color: var(--textColor);
+    }
+
+    input {
+      display: block;
+      padding: 0.25rem;
+      border: 1px solid var(--primaryColor);
+      outline: none;
+      font-family: "Poppins", sans-serif;
+      color: var(--textColor);
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.25rem;
+    }
+  }
+
+  div.modal.active {
+    display: flex;
+  }
+}

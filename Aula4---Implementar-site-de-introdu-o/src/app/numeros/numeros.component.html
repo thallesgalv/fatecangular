@@ -1,0 +1,10 @@
+<section>
+  <h1>Números</h1>
+  <p>{{n}} números aleatórios de 1 a 100 gerados</p>
+
+  <ul>
+    <li *ngFor="let item of getRandomNumbers();">
+      {{item}}
+    </li>
+  </ul>
+</section>

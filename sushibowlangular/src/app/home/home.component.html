@@ -1,0 +1,12 @@
+<a routerLink="/produtos">
+  <img
+    src="https://github.com/thallesgalv/sushibowlangular/blob/master/src/assets/homedesktop.png?raw=true"
+    alt=""
+    [ngClass]="{ active: !globalService.isMobile }"
+  />
+  <img
+    src="https://github.com/thallesgalv/sushibowlangular/blob/master/src/assets/homemobile.png?raw=true"
+    alt=""
+    [ngClass]="{ active: globalService.isMobile }"
+  />
+</a>

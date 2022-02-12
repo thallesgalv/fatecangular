@@ -1,0 +1,62 @@
+header {
+  background-color: #5a4b81;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 4rem;
+  flex-wrap: wrap;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.timer > button {
+  border: none;
+}
+
+.timer input {
+  background: transparent;
+  border: 1px solid #e1e5e5;
+  font-size: 1rem;
+  padding: 0.25rem;
+  color: #e1e5e5;
+  border-radius: 0.25rem;
+}
+
+.timer input::placeholder {
+  color: #628b8b;
+}
+
+.timer > p {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-family: 'Courier New';
+}
+
+.timer > button {
+  background: transparent;
+  border: 1px solid #e1e5e5;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  color: #e1e5e5;
+  cursor: pointer;
+}

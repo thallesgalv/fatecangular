@@ -1,0 +1,155 @@
+<main>
+  <app-title [text]="title"></app-title>
+  <input
+    [(ngModel)]="this.productsService.query"
+    (keydown)="handleSearch()"
+    type="text"
+    placeholder="🔍 Busque um prato ou ingrediente"
+  />
+
+  <section>
+    <ul class="grid">
+      <li
+        *ngFor="let product of productsService.products"
+        (click)="handleModal(product.id)"
+      >
+        <img src="{{ product.imagem }}" alt="{{ product.name }}" />
+        <p>{{ product.name }}</p>
+      </li>
+    </ul>
+    <aside class="filters">
+      <form>
+        <legend>Categorias</legend>
+
+        <div
+          *ngFor="let category of productsService.categories"
+          class="filterButton"
+          [ngClass]="{ active: category.id === filterPicked }"
+          (click)="handleFilter(category.id)"
+        >
+          {{ category.nome }}
+        </div>
+
+        <small (click)="handleClean()">Limpar filtros</small>
+
+        <div class="nutritionalFilters">
+          <legend>Nutrientes</legend>
+
+          <hr />
+
+          <div class="nutritionalFilters__category">
+            <h3>Calorias</h3>
+
+            <label for="cals">
+              <div class="nutritionalFilters__rangeContainer">
+                <p>Min:{{ nutritionalTablesService.minCals }}</p>
+                <input
+                  name="h3"
+                  type="range"
+                  min="{{ nutritionalTablesService.minCals }}"
+                  max="{{ nutritionalTablesService.maxCals }}"
+                  [(ngModel)]="nutritionalTablesService.queryCals"
+                  step="0.01"
+                  (ngModelChange)="getProductsByCalsBetween()"
+                />
+                <p>Max:{{ nutritionalTablesService.maxCals }}</p>
+              </div>
+              <strong
+                >Valor selecionado:
+                {{ nutritionalTablesService.queryCals }}
+              </strong>
+            </label>
+          </div>
+
+          <hr />
+
+          <div class="nutritionalFilters__category">
+            <h3>Gorduras</h3>
+            <label for="gord">
+              <div class="nutritionalFilters__rangeContainer">
+                <p>Min:{{ nutritionalTablesService.minGord }}</p>
+                <input
+                  name="gord"
+                  type="range"
+                  min="{{ nutritionalTablesService.minGord }}"
+                  max="{{ nutritionalTablesService.maxGord }}"
+                  [(ngModel)]="nutritionalTablesService.queryGord"
+                  step="0.01"
+                  (ngModelChange)="  getProductsByGordBetween()"
+                />
+                <p>Max:{{ nutritionalTablesService.maxGord }}</p>
+              </div>
+              <strong
+                >Valor selecionado:
+                {{ nutritionalTablesService.queryGord }}
+              </strong>
+            </label>
+          </div>
+
+          <hr />
+
+          <div class="nutritionalFilters__category">
+            <h3>Carboidratos</h3>
+            <label for="carbs">
+              <div class="nutritionalFilters__rangeContainer">
+                <p>Min:{{ nutritionalTablesService.minCarbs }}</p>
+                <input
+                  name="carbs"
+                  type="range"
+                  min="{{ nutritionalTablesService.minCarbs }}"
+                  max="{{ nutritionalTablesService.maxCarbs }}"
+                  [(ngModel)]="nutritionalTablesService.queryCarbs"
+                  step="0.01"
+                  (ngModelChange)="getProductsByCarbsBetween()"
+                />
+                <p>Max:{{ nutritionalTablesService.maxCarbs }}</p>
+              </div>
+              <strong
+                >Valor selecionado:
+                {{ nutritionalTablesService.queryCarbs }}
+              </strong>
+            </label>
+          </div>
+
+          <hr />
+
+          <div class="nutritionalFilters__category">
+            <h3>Proteínas</h3>
+            <label for="prot">
+              <div class="nutritionalFilters__rangeContainer">
+                <p>Min:{{ nutritionalTablesService.minProt }}</p>
+                <input
+                  name="prot"
+                  type="range"
+                  min="{{ nutritionalTablesService.minProt }}"
+                  max="{{ nutritionalTablesService.maxProt }}"
+                  [(ngModel)]="nutritionalTablesService.queryProt"
+                  step="0.01"
+                  (ngModelChange)="getProductsByProtBetween()"
+                />
+                <p>Max:{{ nutritionalTablesService.maxProt }}</p>
+              </div>
+              <strong
+                >Valor selecionado:
+                {{ nutritionalTablesService.queryProt }}
+              </strong>
+            </label>
+          </div>
+          <hr />
+        </div>
+      </form>
+    </aside>
+  </section>
+</main>
+<div *ngIf="globalService.activeModal">
+  <app-modal
+    [productId]="productsService.productPicked.id"
+    [productName]="productsService.productPicked.name"
+    [productImage]="productsService.productPicked.imagem"
+    [productCategory]="productsService.productPicked.categoria.nome"
+    [productIngredients]="productsService.productPicked.ingredientes"
+    [productRestaurants]="productsService.productPicked.restaurante"
+    [productNutritionalTable]="productsService.productPicked.tabelaNutricional"
+  >
+  </app-modal>
+</div>

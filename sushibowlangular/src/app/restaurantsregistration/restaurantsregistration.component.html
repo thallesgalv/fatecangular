@@ -1,0 +1,39 @@
+<div class="formRegistration">
+  <h2>Restaurantes</h2>
+  <div>
+    <div class="col">
+      <label> ID: <input type="number" [(ngModel)]="this.id" /> </label>
+      <label> Acesso: <input type="number" [(ngModel)]="this.acesso" /> </label>
+      <label> Login: <input type="text" [(ngModel)]="this.login" /> </label>
+      <label> Senha: <input type="password" [(ngModel)]="this.senha" /> </label>
+      <label> Nome: <input type="text" [(ngModel)]="this.nome" /> </label>
+      <label>
+        CEP:
+        <input type="text" [(ngModel)]="this.cep" (keyup)="getCepInfos()" />
+      </label>
+    </div>
+    <div class="col">
+      <label>
+        Logradouro:
+        <input type="text" [(ngModel)]="this.logradouro" />
+      </label>
+      <label>
+        Complemento: <input type="text" [(ngModel)]="this.complemento" />
+      </label>
+      <label> Bairro: <input type="text" [(ngModel)]="this.bairro" /> </label>
+      <label> Cidade: <input type="text" [(ngModel)]="this.cidade" /> </label>
+      <label>
+        Estado:
+        <input type="text" [(ngModel)]="this.estado" />
+      </label>
+      <label>
+        CPNJ:
+        <input type="text" [(ngModel)]="this.cnpj" />
+      </label>
+    </div>
+  </div>
+</div>
+<div class="flex">
+  <button (click)="handleRegistration()">Cadastrar Restaurante</button>
+  <button (click)="handleUpdate()">Atualizar Restaurante</button>
+</div>

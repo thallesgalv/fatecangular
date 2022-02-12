@@ -1,0 +1,17 @@
+body {
+  background: #191622;
+  color: #e1e1e6;
+  font-family: 'Nunito';
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}

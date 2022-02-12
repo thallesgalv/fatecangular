@@ -1,0 +1,338 @@
+/* You can add global styles to this file, and also import other style files */
+// ==========================================================================
+// CSS Reset
+// ==========================================================================
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+p,
+span,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+legend,
+fieldset,
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-weight: normal;
+
+  a {
+    text-decoration: none;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+  }
+
+  img[src$=".svg"] {
+    width: 100%;
+    max-width: none;
+    height: auto;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+}
+
+:root {
+  --primaryColor: #f88a3f;
+  --secondaryColor: #c06376;
+  --tertiaryColor: #ff6700;
+  --textColor: #333333;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+body.hasModal {
+  overflow: hidden;
+
+  header {
+    z-index: -1;
+  }
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 0.25rem;
+  outline: none;
+  background: var(--secondaryColor);
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    background-color: var(--primaryColor);
+    transform: scale(1.03);
+  }
+
+  > svg {
+    font-size: 1.5rem;
+  }
+}
+
+input,
+select {
+  width: 100%;
+  height: 2.8125rem;
+  margin: 1rem auto;
+  padding-left: 1.875rem;
+  border: 1px solid var(--secondaryColor);
+  border-radius: 0.9375rem;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: var(--textColor);
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  &::placeholder {
+    color: var(--secondaryColor);
+  }
+}
+
+main {
+  width: calc(min(90%, 75rem));
+  min-height: calc(100vh - 10rem);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 5rem auto 0 auto;
+  padding-top: 2.5rem;
+  animation: show 0.5s forwards;
+
+  @keyframes show {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -50px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @media (max-width: 767px) {
+    height: unset;
+  }
+}
+
+ul.grid {
+  width: 100%;
+  min-height: calc(100vh - 10rem);
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 12.5rem);
+  place-content: flex-start;
+  place-items: flex-start;
+  gap: 1rem;
+
+  > li {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.2, 1, 0.2, 1.4);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    p {
+      width: 60%;
+      text-align: center;
+      font-size: 1.2375rem;
+      font-weight: 300;
+      color: var(--secondaryColor);
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+      font-weight: 300;
+      color: var(--secondaryColor);
+    }
+  }
+}
+
+ul.gridRestaurants {
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+
+  li {
+    width: 100%;
+    max-width: 18rem;
+    height: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--secondaryColor);
+    border-radius: 0.9375rem;
+    text-align: center;
+
+    p {
+      width: 100%;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+aside.filters {
+  width: calc(min(90%, 22rem));
+  min-height: calc(100vh - 10rem);
+  padding: 2rem;
+  border: 1px solid var(--secondaryColor);
+  border-radius: 0.9375rem;
+  position: relative;
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 0.9375rem;
+    background-color: var(--secondaryColor);
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+  legend {
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    text-decoration: underline;
+    color: var(--secondaryColor);
+  }
+
+  .filterButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--secondaryColor);
+    border-radius: 0.9375rem;
+    color: var(--secondaryColor);
+    cursor: pointer;
+
+    &.active {
+      background-color: var(--secondaryColor);
+      color: #fff;
+    }
+  }
+
+  small {
+    display: block;
+    margin-top: 1rem;
+    text-align: right;
+    font-size: 0.75rem;
+    text-decoration: underline;
+    color: var(--secondaryColor);
+    cursor: pointer;
+  }
+
+  .nutritionalFilters {
+    margin-top: 2rem;
+
+    &__category {
+      margin-top: 1rem;
+      position: relative;
+
+      h3 {
+        text-align: center;
+        font-weight: 600;
+        color: var(--secondaryColor);
+      }
+
+      label {
+        font-size: 0.75rem;
+        color: var(--secondaryColor);
+
+        strong {
+          display: block;
+          text-align: center;
+        }
+
+        input {
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__rangeContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  }
+}
+
+.formRegistration {
+  color: var(--secondaryColor);
+
+  h2 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .col {
+      width: 40%;
+    }
+  }
+
+  input,
+  select {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem auto;
+}

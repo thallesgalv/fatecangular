@@ -1,0 +1,40 @@
+<main>
+  <app-title [text]="title"></app-title>
+
+  <input
+    placeholder="🔍 Busque um restaurante pelo nome"
+    [(ngModel)]="restaurantsService.query"
+    (keydown)="handleSearch()"
+    type="text"
+  />
+
+  <section>
+    <ul class="grid gridRestaurants">
+      <li
+        *ngFor="let restaurant of restaurantsService.restaurants"
+        (click)="handleModal(restaurant.id)"
+      >
+        <h2>{{ restaurant?.nome }}</h2>
+        <p>
+          {{ restaurant.endereco?.logradouro }}
+        </p>
+        <p> {{ restaurant.endereco?.bairro }}</p>
+        <p>
+          {{ restaurant.endereco?.cidade }} - {{ restaurant.endereco?.estado }}
+        </p>
+      </li>
+    </ul>
+  </section>
+</main>
+<div *ngIf="globalService.activeModal">
+  <app-modal
+    [restaurantId]="restaurantsService.restaurantPicked.id"
+    [restaurantName]="restaurantsService.restaurantPicked.nome"
+    [restaurantAdress]="restaurantsService.restaurantPicked.endereco.logradouro"
+    [restaurantDistrict]="restaurantsService.restaurantPicked.endereco.bairro"
+    [restaurantCity]="restaurantsService.restaurantPicked.endereco.cidade"
+    [restaurantState]="restaurantsService.restaurantPicked.endereco.estado"
+    [restaurantProducts]="productsService.products"
+  >
+  </app-modal>
+</div>

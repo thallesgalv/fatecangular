@@ -1,0 +1,30 @@
+<nav>
+  <ul>
+    <li>
+      <a [routerLink]="['/']">Home</a>
+    </li>
+    <li>
+      <a [routerLink]="['currency']">Tabela</a>
+    </li>
+    <li>
+      <a [routerLink]="['wallet']">Carteira</a>
+    </li>
+  </ul>
+
+  <ul>
+    Último valor do Bitcoin em Real:
+    {{
+      walletService.lastBRLRate
+    }}
+    {{
+      walletService.status
+    }}
+  </ul>
+</nav>
+
+<h1>P1 Angular</h1>
+<p>Nome: {{ this.name }}</p>
+<p>RA: {{ this.ra }}</p>
+<p><a href="{{ this.github }}" target="_blank">Perfil do Github</a></p>
+
+<router-outlet></router-outlet>

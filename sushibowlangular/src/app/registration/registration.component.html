@@ -1,0 +1,17 @@
+<main *ngIf="globalService.isAdmin">
+  <app-title [text]="title"></app-title>
+
+  <section>
+    <button (click)="activateProduct()">Cadastrar Produto</button>
+    <button (click)="activateRestaurant()">Cadastrar Restaurante</button>
+  </section>
+
+  <div *ngIf="this.product">
+    <app-productsregistration></app-productsregistration>
+  </div>
+
+  <div *ngIf="this.restaurant">
+    <app-restaurantsregistration></app-restaurantsregistration>
+  </div>
+
+</main>

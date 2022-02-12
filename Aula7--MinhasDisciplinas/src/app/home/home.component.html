@@ -1,0 +1,22 @@
+<section>
+  <h1>Sobre</h1>
+  <p>Me chamo Thalles Galvão e trabalho como Desenvolvedor Front-End. Estou no 5º ciclo da Fatec. <br>Meu número de matrícula é: 0050831921029
+  </p>
+  <a href="https://github.com/thallesgalv" target="_blank">
+    Perfil no Github
+  </a>
+  <hr>
+  <h1>Horários</h1>
+  <table>
+    <tr>
+      <th>Dia da semana</th>
+      <th>Horário</th>
+      <th>Nome da disciplina</th>
+    </tr>
+    <tr *ngFor="let item of schedulesService.getList()">
+      <td>{{item.weekDay}}</td>
+      <td>{{item.time}}</td>
+      <td>{{item.name}}</td>
+    </tr>
+  </table>
+</section>

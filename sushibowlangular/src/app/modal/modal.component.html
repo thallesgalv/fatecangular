@@ -1,0 +1,102 @@
+<div class="modal__wrapper">
+  <div class="modal__card">
+    <section *ngIf="productName">
+      <div class="modal__container">
+        <img src="{{ productImage }}" alt="{{ productName }}" />
+        <div class="modal__infos">
+          <p class="modal__category">{{ productCategory }}</p>
+          <h1 class="modal__title">{{ productName }}</h1>
+          <div class="modal__description">
+            <strong>Ingredientes: </strong>{{ productIngredients }}
+          </div>
+          <div class="modal__description">
+            <strong>Onde Encontrar? </strong>
+            <ul>
+              <li *ngFor="let restaurante of productRestaurants">
+                {{ restaurante.nome }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__nutritionalTable">
+        <h2 class="modal__subtitle">Tabela Nutricional</h2>
+        <ul>
+          <li>
+            <span>
+              {{ productNutritionalTable.cals }}
+            </span>
+          </li>
+          <li>
+            <span>
+              {{ productNutritionalTable.gord }}
+            </span>
+          </li>
+          <li>
+            <span> {{ productNutritionalTable.carbs }}g </span>
+          </li>
+          <li>
+            <span> {{ productNutritionalTable.prot }}g </span>
+          </li>
+          <p>cals</p>
+          <p>gord</p>
+          <p>carbs</p>
+          <p>prot</p>
+        </ul>
+      </div>
+      <button
+        *ngIf="globalService.isAdmin"
+        (click)="productsService.deleteProduct(productId)"
+        class="btn"
+        style="margin: 2rem auto"
+      >
+        Deletar Produto
+      </button>
+    </section>
+
+    <section *ngIf="restaurantName">
+      <h2 class="modal__title">{{ restaurantName }}</h2>
+      <p class="modal__description">
+        {{ restaurantAdress }} - {{ restaurantDistrict }}
+      </p>
+      <p class="modal__description">
+        {{ restaurantCity }} - {{ restaurantState }}
+      </p>
+      <p class="modal__description">Aqui você encontra:</p>
+      <ul class="modal__list">
+        <li *ngFor="let product of restaurantProducts">
+          <img src="{{ product.imagem }}" alt="{{ product.name }}" />
+          {{ product.name }}
+        </li>
+      </ul>
+      <button
+        (click)="restaurantsService.deleteRestaurant(restaurantId)"
+        class="btn"
+        style="margin: 2rem auto"
+        *ngIf="globalService.isAdmin"
+      >
+        Deletar Restaurante
+      </button>
+    </section>
+
+    <div class="modal__close" (click)="globalService.closeModal()">
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="none"
+          stroke="#000"
+          stroke-width="2"
+          d="M3,3 L21,21 M3,21 L21,3"
+        ></path>
+      </svg>
+    </div>
+  </div>
+</div>

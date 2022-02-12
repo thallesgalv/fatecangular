@@ -1,0 +1,26 @@
+<section>
+  <p>Nome: Thalles Galvão</p>
+  <p>RA: 0050831921029</p>
+  <a href="https://github.com/thallesgalv/">Link do Github</a>
+
+  <h1>Bitcoin X Real</h1>
+
+  <table border="1">
+    <tr>
+      <th>Data/hora</th>
+      <th>BRL</th>
+      <th>USD</th>
+    </tr>
+    <tr *ngFor="let rate of this.bitCoinService.bitCoinRates">
+      <td>{{ rate.time.updated }}</td>
+      <td>
+        R$
+        {{ rate.bpi.BRL.rate_float }}
+      </td>
+      <td>
+        $
+        {{ rate.bpi.USD.rate_float }}
+      </td>
+    </tr>
+  </table>
+</section>

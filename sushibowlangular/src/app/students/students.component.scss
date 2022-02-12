@@ -1,0 +1,44 @@
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--secondaryColor);
+  border-radius: 0.9375rem;
+
+  img {
+    width: 5rem;
+    clip-path: circle();
+  }
+
+  small,
+  a {
+    color: var(--secondaryColor);
+  }
+
+  p {
+    color: var(--textColor);
+  }
+
+  a {
+    display: flex;
+
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+  }
+
+  svg {
+    font-size: 1.5rem;
+  }
+
+  + li {
+    margin-top: 1rem;
+  }
+
+  span {
+    display: inline-block;
+    font-size: 0.75rem;
+  }
+}
